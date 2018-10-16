@@ -1,0 +1,13 @@
+.jumbotron {
+    text-align: center;
+    -webkit-text-fill-color: aliceblue;
+    background: rgb(51, 51, 53)
+}
+
+table {
+    text-align: center;
+}
+
+th, tr {
+    text-align: left;
+}
