@@ -1,3 +1,8 @@
+h1{
+    font-family: "Helvetica", Arial, sans-serif;
+    
+}
+
 .jumbotron {
     text-align: center;
     -webkit-text-fill-color: aliceblue;
@@ -13,14 +18,15 @@ th, tr {
 }
 
 body {
-margin: 40px;
+margin: 20px;
 }
 
 .wrapper {
 
     display: grid;
-    grid-template-columns: 250px 250px 250px 250px;
-    grid-template-rows: 300px 300px 300px 300px;
+    padding-left: 125px;
+    grid-template-columns: 185px 185px 185px 185px;
+    grid-template-rows: 330px 330px 330px 330px 330px;
     grid-gap: 10px;
     background-color:  rgb(51, 51, 53);
     color: #444;
@@ -30,43 +36,28 @@ margin: 40px;
     background-color: #444;
     color: #fff;
     border-radius: 5px;
-    padding: 20px;
-    font-size: 150%;
+    font-size: 110%;
 }
 
-.a {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    }
-.b {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
+
+.pagination {
+    display: inline-block;
 }
-.c {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
+
+.pagination a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
 }
-.d {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
+
+.pagination a.active {
+    background-color: rgba(233, 233, 233, 0.637);
+    color: white;
+    border-radius: 5px;
 }
-.e {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-.f {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
 }
