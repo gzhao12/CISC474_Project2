@@ -3,10 +3,16 @@ h1{
     
 }
 
+.background {
+    background-image: url("http://image.tmdb.org/t/p/original//VuukZLgaCrho2Ar8Scl9HtV3yD.jpg");
+    background-position: center;
+    overflow: hidden;
+}
+
 .jumbotron {
     text-align: center;
     -webkit-text-fill-color: aliceblue;
-    background: rgb(51, 51, 53)
+    background: rgb(51, 51, 53);
 }
 
 table {
@@ -24,9 +30,9 @@ margin: 20px;
 .wrapper {
 
     display: grid;
-    padding-left: 125px;
-    grid-template-columns: 185px 185px 185px 185px;
-    grid-template-rows: 330px 330px 330px 330px 330px;
+    padding-left: 40px;
+    grid-template-columns: 185px 185px 185px 185px 185px;
+    grid-template-rows: 330px 330px 330px 330px;
     grid-gap: 10px;
     background-color:  rgb(51, 51, 53);
     color: #444;

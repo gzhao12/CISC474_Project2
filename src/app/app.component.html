@@ -1,25 +1,29 @@
+<div class = "background">
 <app-layout>
-  <div class="jumbotron">
-    <h1>Popcorn Pass</h1>
-    <div class="wrapper">
-      <ng-container *ngFor="let results of restItems['results']; let i = index">
-        <div class="box">
-            <img src="http://image.tmdb.org/t/p/w185/{{results.poster_path}}" />
-          <p>{{results.original_title}}</p>
+   
+    <div class="jumbotron">
+        <h1>Popcorn Pass</h1>
+        <div class="wrapper">
+            <ng-container *ngFor="let results of restItems['results']; let i = index">
+                <div class="box">
+                    <img src="http://image.tmdb.org/t/p/w185/{{results.poster_path}}" />
+                    <p>{{results.original_title}}</p>
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
+
+        <br />
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        </div>
     </div>
 
-    <br />
-    <div class="pagination">
-      <a href="#">&laquo;</a>
-      <a href="#">1</a>
-      <a href="#" class="active">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <a href="#">5</a>
-      <a href="#">6</a>
-      <a href="#">&raquo;</a>
-    </div>
-  </div>
 </app-layout>
+</div>

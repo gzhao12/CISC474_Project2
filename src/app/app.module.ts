@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UiModule } from './ui/ui.module';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +17,7 @@ import { UiModule } from './ui/ui.module';
     AppRoutingModule,
     UiModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }
