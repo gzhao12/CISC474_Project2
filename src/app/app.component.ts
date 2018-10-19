@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.getRestItems();
-    //    alert(this.pageNumber);
   }
 
   // Read all REST Items

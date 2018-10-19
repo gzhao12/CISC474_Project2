@@ -1,8 +1,28 @@
 <div class = "background">
 <app-layout>
-   
     <div class="jumbotron">
         <h1>Popcorn Pass</h1>
+        <ng-container>
+                <div class="container">
+                    <!-- Content here -->
+                    <ul class="nav nav-pills">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sort by</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Now Playing</a>
+    
+                                <a class="dropdown-item" href="#">Top Rated</a>
+                                <a class="dropdown-item" href="#">Popular</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Upcoming</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            <br />
+            
+            </ng-container>
+        <div class = sortBy></div>
         <div class="wrapper">
             <ng-container *ngFor="let results of restItems['results']; let i = index">
                 <div class="box">
