@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent implements OnInit {
   pageNumber: number;
   title = 'PopcornPass';
-  restItems: any;
+  restItems: any = [];
   // popular = 'https://api.themoviedb.org/3/discover/movie?'
   //   + 'page=' + this.pageNumber + '&include_video=false&include_adult=false' +
   //   '&sort_by=popularity.desc&language=en-US&api_key=096ec8c51f2550df738bf3cacc8f35ef';
