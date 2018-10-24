@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { $ } from 'protractor';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -61,6 +62,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.pageNumber = 1;
     this.getRestItems(this.pageNumber, this.popular, this.restItemsURLSuffix);
+    document.getElementById("pageNum").textContent = this.restItems.page;
   }
 
   // Read all REST Items
@@ -69,22 +71,45 @@ export class AppComponent implements OnInit {
       .subscribe(
         restItems => {
           this.restItems = restItems;
-          console.log("getRestItems function: " + this.restItems);
+          document.getElementById("pageNum").textContent = "Page " + this.restItems.page + " of " + this.restItems.total_pages;
+          console.log(this.restItems);
         }
       );
   }
 
   incrementPageNumber() {
-    this.pageNumber ++;
-    this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
+    if (this.pageNumber < this.restItems.total_pages){
+      this.pageNumber ++;
+      this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
+    }
   }
 
   decrementPageNumber() {
-    if (this.pageNumber < 1) {
+    if (this.pageNumber <= 1) {
       this.pageNumber = 1;
     } else {
       this.pageNumber--;
     }
+    this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
+  }
+
+  jumpToPageNumber(pageNumber) {
+    this.pageNumber = pageNumber;
+    this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
+  }
+
+  submitClick(){
+    console.log((<HTMLInputElement>document.getElementById("input")).value);
+    this.jumpToPageNumber((<HTMLInputElement>document.getElementById("input")).value);
+  }
+
+  jumpToFirst() {
+    this.pageNumber = 1;
+    this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
+  }
+
+  jumpToLast() {
+    this.pageNumber = this.restItems.total_pages;
     this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
   }
 
