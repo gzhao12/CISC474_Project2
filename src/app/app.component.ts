@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
   pageNumber: number;
   title = 'PopcornPass';
   restItems: any = [];
-
   restItemsUrl: string;
   latest: string;
 
@@ -83,14 +82,14 @@ export class AppComponent implements OnInit {
   decrementPageNumber() {
     if (this.pageNumber < 1) {
       this.pageNumber = 1;
-    }
-    else {
-    this.pageNumber --;
+    } else {
+      this.pageNumber--;
     }
     this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
   }
 
   // Rest Items Service: Read all REST Items
+
   restItemsServiceGetRestItems(pageNumber, restItemsUrl, URLSuffix) {
     this.restItemsUrl = restItemsUrl + pageNumber + URLSuffix;
     return this.http
