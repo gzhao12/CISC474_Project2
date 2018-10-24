@@ -68,9 +68,11 @@ margin: 20px;
     color: #000000;
     background-color: #444;
     border-style: none;
+    border-radius: 5px;
 }
 
 .submitButton{
     background-color: #444;
     border-style: none;
+    border-radius: 5px;
 }
