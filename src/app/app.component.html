@@ -8,7 +8,7 @@
           <ul class="nav nav-pills">
             <li class="nav-item dropdown">
               <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="false" id="sortTag">Sort by </a>
+                aria-expanded="false" id="sortTag">Sort by: </a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" [routerLink]="" (click)="switchSort(1)">Now Playing</a>
                 <a class="dropdown-item" [routerLink]="" (click)="switchSort(2)">Top Rated</a>
@@ -25,12 +25,17 @@
       <div class=sortBy></div>
       <div class="wrapper">
         <ng-container *ngFor="let results of restItems['results']; let i = index">
-          <div class="ticket">
-            something
-            
-          </div>
-            <!-- <img src="http://image.tmdb.org/t/p/w185/{{results.poster_path}}" />
-            <p>{{results.original_title}}</p> -->
+            <div class="ticket">
+                <div class="card" id="{{i}}" onclick="flip(this)">
+                  <div class="front">
+                    <img src="http://image.tmdb.org/t/p/w185/{{results.poster_path}}" />
+                  </div>
+                  <div class="back">
+                    <p class="title">{{results.title}}</p>
+                    <p class="overview">{{results.overview}}</p>
+                  </div>
+                </div>
+              </div>
         </ng-container>
       </div>
 
@@ -51,4 +56,5 @@
       <button (click)="submitClick()" class="submitButton">Jump!</button>
     </div>
   </app-layout>
+  
 </div>

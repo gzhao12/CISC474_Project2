@@ -1,7 +1,6 @@
 TODO:
 
-2. card flip
-    on click, changes background image of page
-3. top logo
-4. make page number bold and rest not
-5. various small tidying things for aesthetics(TM)
+1. top logo
+2. link other pages
+3. various small tidying things for aesthetics(TM)
+    make back of card blurred poster image
