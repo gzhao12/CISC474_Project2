@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+import { $ } from 'protractor';
 
 
 @Component({
@@ -24,30 +26,38 @@ export class AppComponent implements OnInit {
   topRated = 'https://api.themoviedb.org/3/movie/top_rated?page='
   popular = 'https://api.themoviedb.org/3/movie/popular?page='
   upcoming = 'https://api.themoviedb.org/3/movie/upcoming?page='
+  currentSort = this.popular;
 
   switchSort(type) {
     switch(type) {
       case 1: {
-        this.getRestItems(1, this.nowPlaying, this.restItemsURLSuffix);
+        this.pageNumber = 1;
+        this.currentSort = this.nowPlaying;
+        this.getRestItems(this.pageNumber, this.nowPlaying, this.restItemsURLSuffix);
         break;
       }
       case 2: {
-        this.getRestItems(1, this.topRated, this.restItemsURLSuffix);
+        this.pageNumber = 1;
+        this.currentSort = this.topRated;
+        this.getRestItems(this.pageNumber, this.topRated, this.restItemsURLSuffix);
         break;
       }
       case 3: {
-        this.getRestItems(1, this.popular, this.restItemsURLSuffix);
+        this.pageNumber = 1;
+        this.currentSort = this.popular;
+        this.getRestItems(this.pageNumber, this.popular, this.restItemsURLSuffix);
         break;
       }
       case 4: {
-        this.getRestItems(1, this.upcoming, this.restItemsURLSuffix);
+        this.pageNumber = 1;
+        this.currentSort = this.upcoming;
+        this.getRestItems(this.pageNumber, this.upcoming, this.restItemsURLSuffix);
         break;
       }
     }
   }
 
   constructor(private http: HttpClient) {}
-
 
   ngOnInit() {
     this.pageNumber = 1;
@@ -60,14 +70,14 @@ export class AppComponent implements OnInit {
       .subscribe(
         restItems => {
           this.restItems = restItems;
-          console.log(this.restItems);
+          console.log("getRestItems function: " + this.restItems);
         }
       );
   }
 
   incrementPageNumber() {
     this.pageNumber ++;
-    this.getRestItems(this.pageNumber, this.popular, this.restItemsURLSuffix);
+    this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
   }
 
   decrementPageNumber() {
@@ -77,7 +87,7 @@ export class AppComponent implements OnInit {
     else {
     this.pageNumber --;
     }
-    this.getRestItems(this.pageNumber, this.popular, this.restItemsURLSuffix);
+    this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
   }
 
   // Rest Items Service: Read all REST Items
