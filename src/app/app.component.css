@@ -95,6 +95,7 @@ body {
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
     background-color:  rgb(51, 51, 53);
 }
 
@@ -103,6 +104,7 @@ body {
 }
 
 .card .back :hover {
+    color: white;
 }
 
 .card div {
