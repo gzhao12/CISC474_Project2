@@ -15,31 +15,48 @@ export class AppComponent implements OnInit {
   pageNumber: number;
   title = 'PopcornPass';
   restItems: any = [];
-  // popular = 'https://api.themoviedb.org/3/discover/movie?'
-  //   + 'page=' + this.pageNumber + '&include_video=false&include_adult=false' +
-  //   '&sort_by=popularity.desc&language=en-US&api_key=096ec8c51f2550df738bf3cacc8f35ef';
+
   restItemsUrl: string;
   latest: string;
 
+  restItemsURLSuffix = '&language=en-US&api_key=096ec8c51f2550df738bf3cacc8f35ef'
+  nowPlaying = 'https://api.themoviedb.org/3/movie/now_playing?page='
+  topRated = 'https://api.themoviedb.org/3/movie/top_rated?page='
+  popular = 'https://api.themoviedb.org/3/movie/popular?page='
+  upcoming = 'https://api.themoviedb.org/3/movie/upcoming?page='
+
+  switchSort(type) {
+    switch(type) {
+      case 1: {
+        this.getRestItems(1, this.nowPlaying, this.restItemsURLSuffix);
+        break;
+      }
+      case 2: {
+        this.getRestItems(1, this.topRated, this.restItemsURLSuffix);
+        break;
+      }
+      case 3: {
+        this.getRestItems(1, this.popular, this.restItemsURLSuffix);
+        break;
+      }
+      case 4: {
+        this.getRestItems(1, this.upcoming, this.restItemsURLSuffix);
+        break;
+      }
+    }
+  }
 
   constructor(private http: HttpClient) {}
 
 
   ngOnInit() {
-    this.getRestItems(this.pageNumber);
     this.pageNumber = 1;
+    this.getRestItems(this.pageNumber, this.popular, this.restItemsURLSuffix);
   }
 
-  // changeSorting() {
-  //   latest = 'https://api.themoviedb.org/3/discover/movie?'
-  //   + 'page=&include_video=false&include_adult=false&'
-  //   + 'sort_by=latest.desc&language=enUS&api_key=096ec8c51f2550df738bf3cacc8f35ef';
-
-  // }
-
   // Read all REST Items
-  getRestItems(pageNumber): void {
-    this.restItemsServiceGetRestItems(pageNumber)
+  getRestItems(pageNumber, restItemsUrl, URLSuffix): void {
+    this.restItemsServiceGetRestItems(pageNumber, restItemsUrl, URLSuffix)
       .subscribe(
         restItems => {
           this.restItems = restItems;
@@ -50,7 +67,7 @@ export class AppComponent implements OnInit {
 
   incrementPageNumber() {
     this.pageNumber ++;
-    this.getRestItems(this.pageNumber);
+    this.getRestItems(this.pageNumber, this.popular, this.restItemsURLSuffix);
   }
 
   decrementPageNumber() {
@@ -60,14 +77,12 @@ export class AppComponent implements OnInit {
     else {
     this.pageNumber --;
     }
-    this.getRestItems(this.pageNumber);
+    this.getRestItems(this.pageNumber, this.popular, this.restItemsURLSuffix);
   }
 
   // Rest Items Service: Read all REST Items
-  restItemsServiceGetRestItems(pageNumber) {
-    this.restItemsUrl = 'https://api.themoviedb.org/3/discover/movie?'
-    + 'page=' + pageNumber + '&include_video=false&include_adult=false' +
-    '&sort_by=popularity.desc&language=en-US&api_key=096ec8c51f2550df738bf3cacc8f35ef';
+  restItemsServiceGetRestItems(pageNumber, restItemsUrl, URLSuffix) {
+    this.restItemsUrl = restItemsUrl + pageNumber + URLSuffix;
     return this.http
       .get<any[]>(this.restItemsUrl)
       .pipe(map(data => data));

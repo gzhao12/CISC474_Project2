@@ -9,12 +9,11 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sort by</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Now Playing</a>
-    
-                                <a class="dropdown-item" href="#">Top Rated</a>
-                                <a class="dropdown-item" href="#">Popular</a>
+                                <a class="dropdown-item" [routerLink]="" (click) = "switchSort(1)">Now Playing</a>
+                                <a class="dropdown-item" [routerLink]="" (click) = "switchSort(2)">Top Rated</a>
+                                <a class="dropdown-item" [routerLink]="" (click) = "switchSort(3)">Popular</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Upcoming</a>
+                                <a class="dropdown-item" [routerLink]="" (click) = "switchSort(4)">Upcoming</a>
                             </div>
                         </li>
                     </ul>
@@ -44,6 +43,5 @@
             <button (click) = "incrementPageNumber()">&raquo;</button>
         </div>
     </div>
-
 </app-layout>
 </div>
