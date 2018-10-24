@@ -38,19 +38,11 @@ margin: 20px;
     display: grid;
     padding-left: 40px;
     grid-template-columns: 185px 185px 185px 185px 185px;
-    grid-template-rows: 330px 330px 330px 330px;
+    grid-template-rows: 278px 278px 278px 278px;
     grid-gap: 10px;
     background-color:  rgb(51, 51, 53);
     color: #444;
 }
-
-.box {
-    background-color: #444;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 110%;
-}
-
 
 .pagination {
     display: inline-block;
@@ -75,4 +67,72 @@ margin: 20px;
     background-color: #444;
     border-style: none;
     border-radius: 5px;
+}
+
+.container {
+    width: 200px;
+    height: 260px;
+    position: relative;
+    border: 1px solid #ccc;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
+
+.ticket {
+    height: 278px;
+    width: 185px;
+    background: white;
+    border-radius: 5px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+}
+
+.card div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 260px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 140px;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card .front {
+  background: red;
+}
+
+.card .back {
+    background: blue;
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+.card.flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
 }

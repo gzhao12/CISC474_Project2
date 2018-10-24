@@ -25,10 +25,12 @@
       <div class=sortBy></div>
       <div class="wrapper">
         <ng-container *ngFor="let results of restItems['results']; let i = index">
-          <div class="box">
-            <img src="http://image.tmdb.org/t/p/w185/{{results.poster_path}}" />
-            <p>{{results.original_title}}</p>
+          <div class="ticket">
+            something
+            
           </div>
+            <!-- <img src="http://image.tmdb.org/t/p/w185/{{results.poster_path}}" />
+            <p>{{results.original_title}}</p> -->
         </ng-container>
       </div>
 
@@ -41,12 +43,12 @@
         <a (click)="jumpToLast()" href="#">&raquo;</a>
       </div>
 
-      <form action=""> 
+      <form action="">
         Jump to Page: <input class="input" type="text" id="input" maxlength="3" size="3" placeholder="1">
         <br>
         <br>
       </form>
-        <button (click) = "submitClick()"class="submitButton">Jump!</button>
+      <button (click)="submitClick()" class="submitButton">Jump!</button>
     </div>
   </app-layout>
 </div>
