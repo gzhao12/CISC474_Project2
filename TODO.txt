@@ -1,0 +1,7 @@
+TODO:
+
+2. card flip
+    on click, changes background image of page
+3. top logo
+4. make page number bold and rest not
+5. various small tidying things for aesthetics(TM)

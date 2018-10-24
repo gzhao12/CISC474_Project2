@@ -4,9 +4,9 @@ h1{
 }
 
 .background {
-    background-image: url("./img/background.jpg");
-    background-position: center;
-    overflow: hidden;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .jumbotron {

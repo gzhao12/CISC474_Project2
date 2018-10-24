@@ -1,4 +1,4 @@
-<div class="background">
+<div class="background" id="backdrop">
   <app-layout>
     <div class="jumbotron">
       <h1>Popcorn Pass</h1>
@@ -8,7 +8,7 @@
           <ul class="nav nav-pills">
             <li class="nav-item dropdown">
               <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="false">Sort by </a>
+                aria-expanded="false" id="sortTag">Sort by </a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" [routerLink]="" (click)="switchSort(1)">Now Playing</a>
                 <a class="dropdown-item" [routerLink]="" (click)="switchSort(2)">Top Rated</a>

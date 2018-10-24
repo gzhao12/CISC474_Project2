@@ -29,35 +29,44 @@ export class AppComponent implements OnInit {
   currentSort = this.popular;
 
   switchSort(type) {
-    switch(type) {
+    document.getElementById("sortTag").setAttribute("style", "font-weight: bold;");
+    switch (type) {
       case 1: {
         this.pageNumber = 1;
         this.currentSort = this.nowPlaying;
         this.getRestItems(this.pageNumber, this.nowPlaying, this.restItemsURLSuffix);
+        document.getElementById("sortTag").textContent = "Now Playing ";
+
         break;
       }
       case 2: {
         this.pageNumber = 1;
         this.currentSort = this.topRated;
         this.getRestItems(this.pageNumber, this.topRated, this.restItemsURLSuffix);
+        document.getElementById("sortTag").textContent = "Top Rated ";
+
         break;
       }
       case 3: {
         this.pageNumber = 1;
         this.currentSort = this.popular;
         this.getRestItems(this.pageNumber, this.popular, this.restItemsURLSuffix);
+        document.getElementById("sortTag").textContent = "Popular ";
+
         break;
       }
       case 4: {
         this.pageNumber = 1;
         this.currentSort = this.upcoming;
         this.getRestItems(this.pageNumber, this.upcoming, this.restItemsURLSuffix);
+        document.getElementById("sortTag").textContent = "Upcoming ";
+
         break;
       }
     }
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.pageNumber = 1;
@@ -72,14 +81,18 @@ export class AppComponent implements OnInit {
         restItems => {
           this.restItems = restItems;
           document.getElementById("pageNum").textContent = "Page " + this.restItems.page + " of " + this.restItems.total_pages;
-          console.log(this.restItems);
+
+          // console.log(this.restItems);
+
+          var tmpURL = "background-image: " + "url('http://image.tmdb.org/t/p/original/" + this.restItems.results[0].backdrop_path + "')";
+          document.getElementById("backdrop").setAttribute("style", tmpURL);
         }
       );
   }
 
   incrementPageNumber() {
-    if (this.pageNumber < this.restItems.total_pages){
-      this.pageNumber ++;
+    if (this.pageNumber < this.restItems.total_pages) {
+      this.pageNumber++;
       this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
     }
   }
@@ -98,7 +111,7 @@ export class AppComponent implements OnInit {
     this.getRestItems(this.pageNumber, this.currentSort, this.restItemsURLSuffix);
   }
 
-  submitClick(){
+  submitClick() {
     console.log((<HTMLInputElement>document.getElementById("input")).value);
     this.jumpToPageNumber((<HTMLInputElement>document.getElementById("input")).value);
   }
